@@ -18,11 +18,11 @@ class TrainTableSeeder extends Seeder
     {
         //
         $train = new Train();
-        $train->azienda = $faker->randomElement('Anas','Treni Italia','RFI');
+        $train->azienda = $faker->randomElement(['Anas','Treni Italia','RFI']);
         $train->stazione_di_partenza = $faker->city();
         $train->stazione_di_arrivo = $faker->city();
-        $train->orario_di_partenza = $faker->Time();
-        $train->orario_di_arrivo = $faker->Time() > $train->orario_di_partenza;
+        $train->orario_di_partenza = $faker->Time() > $train->stazione_di_arrivo;
+        $train->orario_di_arrivo = $faker->Time();
         $train->codice_treno = $faker->randomNumber(6,true);
         $train->numero_carrozze = $faker-> numberBetween(7, 20);
         $train->in_orario = $faker->boolean();
